@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            background-color: black;
+            /* overflow: hidden; */
+        }
+
+        div {
+            width: 150px;
+            height: 150px;
+            background-color: beige;
+            margin-bottom: 4px;
+        }
+
+        #special {
+            background-color: coral;
+        }
+
+        .buttons {
+            display: flex;
+            position: fixed;
+            top: 16px;
+            right: 8px;
+        }
+
+        button {
+            margin-right: 6px;
+        }
+    </style>
+    <title>Broswer Coordinates</title>
+</head>
+
+<body>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div id="special"></div>
+    <div></div>
+    <div></div>
+    <span class="buttons">
+        <button class="by100">Scroll by 100px(y)</button>
+        <button class="to100">Scroll to 100px(y)</button>
+        <button class="intoSpecial">Scroll into special</button>
+    </span>
+    <script>
+        const by100 = document.querySelector(".by100");
+        const to100 = document.querySelector(".to100");
+        const intoSpecial = document.querySelector(".intoSpecial");
+        const special = document.querySelector("#special");
+
+        by100.addEventListener("click", () => {
+            window.scrollBy(0, 100);
+            // window.scrollBy({ left: 0, top: 100, behavior: 'smooth'})
+        })
+
+        to100.addEventListener("click", () => {
+            window.scrollTo(0, 100);
+        })
+
+        intoSpecial.addEventListener("click", (event) => {
+            special.scrollIntoView();
+        })
+    </script>
+</body>
+
+</html>
