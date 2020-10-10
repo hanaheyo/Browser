@@ -97,4 +97,6 @@ body {
 
 .pop-up__message {
     display: block;
+    padding-top: 8px;
+    font-size: 34px;
 }
