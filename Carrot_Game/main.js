@@ -1,11 +1,12 @@
 const ground = document.querySelector(".ground");
 const groundWidth = ground.getBoundingClientRect().width;
 const groundHeight = ground.getBoundingClientRect().height;
-const items = document.querySelectorAll(".item");
+
 const button = document.querySelector(".button");
 const lost = document.querySelector(".lost");
 const won = document.querySelector(".won");
 
+const items = document.querySelectorAll(".item");
 
 const bgm = new Audio("sound/bg.mp3");
 const lostSound = new Audio("sound/alert.mp3");
