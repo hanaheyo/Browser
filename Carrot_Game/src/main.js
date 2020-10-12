@@ -1,4 +1,5 @@
 'use strict';
+import PopUp from './popup.js'
 
 const CARROT_SIZE = 80;
 const CARROT_COUNT = 5;
@@ -11,10 +12,6 @@ const gameBtn = document.querySelector('.game__button');
 const gameTimer = document.querySelector('.game__timer');
 const gameScore = document.querySelector('.game__score');
 
-const popUp = document.querySelector('.pop-up');
-const popUpText = document.querySelector('.pop-up__message');
-const popUpRefresh = document.querySelector('.pop-up__refresh');
-
 const carrotSound = new Audio('sound/carrot_pull.mp3');
 const alertSound = new Audio('sound/alert.mp3');
 const bgSound = new Audio('sound/bg.mp3');
@@ -26,7 +23,12 @@ let started = false;
 let score = 0;
 let timer = undefined; // setInterval에서 return되는 값을 저장해, clearInterval에서 사용해야 하기 떄문에!
 
+const gameFinisherBanner = new PopUp();
+
 field.addEventListener('click', onFieldClick);
+gameFinisherBanner.setClickListener(() => {
+    startGame();
+})
 
 gameBtn.addEventListener('click', () => {
     if (started) {
@@ -35,11 +37,6 @@ gameBtn.addEventListener('click', () => {
         startGame();
     }
 });
-
-popUpRefresh.addEventListener('click', () => {
-    startGame();
-    hidePopUp();
-})
 
 function startGame() {
     started = true;
@@ -54,7 +51,7 @@ function stopGame() {
     started = false;
     stopGameTimer();
     hideGameButton();
-    showPopUpWithText('REPLAY?');
+    gameFinisherBanner.showWithText('REPLAY?');
     playSound(alertSound)
     stopSound(bgSound);
 }
@@ -69,7 +66,7 @@ function finishGame(win) {
     }
     stopGameTimer();
     stopSound(bgSound);
-    showPopUpWithText(win ? 'YOU WON🎉' : 'YOU LOST 😐')
+    gameFinisherBanner.showWithText(win ? 'YOU WON🎉' : 'YOU LOST 😐')
 }
 
 function showStopButton() {
@@ -109,15 +106,6 @@ function updateTimerText(time) {
     const minutes = Math.floor(time / 60);
     const seconds = time % 60;
     gameTimer.innerText = `${minutes}:${seconds}`;
-}
-
-function showPopUpWithText(text) {
-    popUpText.innerText = text;
-    popUp.classList.remove('pop-up--hide');
-}
-
-function hidePopUp() {
-    popUp.classList.add('pop-up--hide');
 }
 
 function initGame() {
