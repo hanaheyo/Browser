@@ -11,19 +11,17 @@
 </head>
 
 <body>
-    <header>
-        Shopping List
-    </header>
-    <section>
-        <div class="list">
-            <div class="container">
-            </div>
-        </div>
-        <input type="text" onkeydown="enter();">
+    <section class="list">
+        <header class="header">Shopping List</header>
+        <ul class="items">
+        </ul>
+        <footer class="footer">
+            <input type="text" class="footer__input">
+            <button class="footer__button">
+                <i class="fas fa-plus"></i>
+            </button>
+        </footer>
     </section>
-    <footer>
-        <i class="fas fa-plus-circle" onclick="getInputValue();"></i>
-    </footer>
 </body>
 
 </html>
