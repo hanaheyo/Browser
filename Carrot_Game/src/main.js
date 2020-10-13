@@ -75,7 +75,7 @@ function finishGame(win) {
         sound.playbug();
     }
     stopGameTimer();
-    stopSound(bgSound);
+    sound.stopBackground();
     gameFinisherBanner.showWithText(win ? 'YOU WON🎉' : 'YOU LOST 😐')
 }
 
