@@ -15,6 +15,7 @@ body {
     width: 800px;
     height: 500px;
     margin: auto;
+    margin-top: 80px;
     background: url(img/background.png) center/cover;
     border-radius: 20px;
 }
